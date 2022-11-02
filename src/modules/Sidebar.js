@@ -10,11 +10,11 @@ import { darkModeAtom } from '../recoil/data';
 
 const Nav = styled.div`
     background-color: ${props => props.theme.backgroundCdark};
-    //background-color: #15171c;
     height: 80px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    transition: 350ms;
 `;
 
 const NavIcon = styled(Link)`
@@ -28,23 +28,27 @@ const NavIcon = styled(Link)`
 
 const SidebarNav = styled.nav`
     background-color: ${props => props.theme.backgroundC};
-    width: 250px;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
     left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
     transition: 350ms;
     z-index: 10;
+
+    @media ${(props) => props.theme.responeSize.desktop} {
+        width: 250px;
+        top: 0px;
+    }
+
+    @media ${(props) => props.theme.responeSize.mobile} {
+        width: 70px;
+        top: 80px;
+    }
 `;
 
 const SidebarWrap = styled.div`
     width: 100%;
-`;
-
-const IconStyle = styled.div`
-    color: ${props => props.theme.iconC};
 `;
 
 export function SidebarModule() {
